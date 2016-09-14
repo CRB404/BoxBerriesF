@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+
+<!-- Basic Page Needs
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Dispatch Strawberries</title>
+		<meta name="description" content="A prototype page for an autonomous box" />
+		<meta name="keywords" content="CoLab, IoT, blockchain, internet of things" />
+		<meta name="author" content="CoLab" />
+		<!-- <link rel="shortcut icon" href="../favicon.ico"> -->
+
+<!-- CSS
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="css/default.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />
+		<link rel="stylesheet" type="text/css" href="css/animations.css" />
+		<link rel="stylesheet" type="text/css" href="css/skeleton.css" />
+
+<!-- FONT
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<link href="https://fonts.googleapis.com/css?family=Roboto:700" rel="stylesheet">
+	  <script src="https://use.fontawesome.com/b1ea2d65a4.js"></script>
+		<script src="js/modernizr.custom.js"></script>
+	</head>
+
+
+	<body>
+
+<!-- Header
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+		<div class="container" style="width: 100%; height:35px; background-color: #F3F3F3;">
+			<div class="row">
+				<div class="twelve column" style="">
+					<ul>
+						<li style="margin-right: 19%; height: 30px;">
+							<button onClick="App.quit()" style="border-color:transparent; padding:0 10px; padding-left:12px; height:30px; margin-top: 2%;">
+								<i class="fa fa-times fa-2x" style="padding-bottom:5px:" aria-hidden="true"></i>
+							</button>
+						</li>
+						<li><h4 style="margin-top: 4%;">DISPATCH</h4></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+
+
+<!-- Main Changing Pages
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+			<!-- Begin Strawberries Hook-->
+			<div class="appPage" id="sHook">
+				<div class="container">
+					<div class="row" id="contentContainer" style="margin-top:15%;">
+						<h1>$3</h1>
+						<h2 style="font-size: 35px; text-align: center;">REWARD</h2>
+						<hr>
+						<h3 style="width:80%; margin-top:15%;">If you move this box across the room.</h3>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advance()">READ MORE</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Hook-->
+
+			<!-- Begin Strawberries Context-->
+			<div class="appPage" id="sContext">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<h2 style="margin-top:30%;">Hello!<br>I'm a <span style="color:#6065FF;">Dispatch</span> box.</h2>
+						<hr>
+						<h2 style="margin-top:10%;">I am trying to get across the room to the shelf marked <span id="destination" style="color:#6065FF;"></span>.</h2>
+						<hr>
+						<h2 style="margin-top:10%;">I will pay you to take me there safely!</h2>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advance()">OKAY</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Context-->
+
+			<!-- Begin Strawberries Accept-->
+			<div class="appPage" id="sAccept">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<h2 style="margin-top:30%;">I am currently holding <span style="color:#6065FF;">strawberries</span>.</h2>
+						<hr>
+						<h2 style="margin-top:10%;">Food spoils all the time in transit.</h2>
+						<h2 style="margin-top:10%;">But if we can stay out of the sun the strawberries will arrive at the peak of their freshness.</h2>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advanceToTrasit()">LETS DO IT</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Accept-->
+
+			<!-- Begin Strawberries Map-->
+			<div class="appPage" id="sMap">
+				<img src="images/Map.jpg" style="width:100%; margin-bottom:4.5%;">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<hr>
+						<h2>Remember, we are going to the shelf marked <span id="destinationMap" style="color:#6065FF;"></span>.</h2>
+						<hr>
+						<h2 style="margin-top:10%;">If the strawberries start to spoil your payout will be reduced.</h2>
+
+							<!-- Modal1-->
+							<div class="modal fade" id="Alert1" role="dialog" style="margin-top: 35%;">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="modal-title" style="color:#6065FF; font-size: 35px;">Quality Alert</h2>
+										</div>
+										<div class="modal-body">
+											<h3 class="modal-title" style="color:#231f20;">The strawberries are about to spoil!</h3>
+										</div>
+										<div class="modal-footer">
+											<h3 class="modal-title" style="color:#231f20;">If we don't hurry I will have to dock your payout.</h3>
+										</div>
+										<!-- Modal content End-->
+									</div>
+								</div>
+							</div>
+							<!-- End Modal1-->
+
+							<!-- Modal2-->
+							<div class="modal fade" id="Alert2" role="dialog" style="margin-top: 35%;">
+								<div class="modal-dialog">
+									<!-- Modal content-->
+									<div class="modal-content">
+										<div class="modal-header">
+											<h2 class="modal-title" style="color:#6065FF; font-size: 35px;">Quality Alert</h2>
+										</div>
+										<div class="modal-body">
+											<h3 class="modal-title" style="color:#231f20;">You got the strawberries out of the heat.</h3>
+										</div>
+										<div class="modal-footer">
+											<h3 class="modal-title" style="color:#231f20;">Thank <span style="color:#6065FF;">you</span>!</h3>
+										</div>
+										<!-- Modal content End-->
+									</div>
+								</div>
+							</div>
+							<!-- End Modal2-->
+
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advance()">WE MADE IT!</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Map-->
+
+			<!-- Begin Strawberries Arrival-->
+			<div class="appPage" id="sArrive">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<h2 style="margin-top:30%; font-size: 35px;">You earned <span style="color:#6065FF;">$3</span></h2>
+						<hr>
+						<h2 style="margin-top:10%;">We made it! Thank you!</h2>
+						<hr>
+						<h2 style="margin-top:10%;">You have just taken a first step into a world of semi-autonomous smart agents.</h2>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advance()">WHAT IS THAT?</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Arrival-->
+
+			<!-- Begin Strawberries So What-->
+			<div class="appPage" id="sSoWhat">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<h2 style="margin-top:30%;">A <span style="color:#6065FF;">semi-autonomous</span> smart agent is a networked node that can make decisions.</h2>
+						<hr>
+						<h2 style="margin-top:10%;">It manifests it decisions by transacting with the world.</h2>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.advance()">PAYOUT</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries So What-->
+
+			<!-- Begin Strawberries Email Input-->
+			<div class="appPage" id="sEmail">
+				<div class="container">
+					<div class="row" id="contentContainer">
+						<h2 style="margin-top:30%;">Please give us your <span style="color:#6065FF;">email</span> so that we can send you payment.</h2>
+						<hr>\
+						<div class="box">
+							<div class="container-4" style="height:auto;">
+								<input type="text" id="emailInput" style="display: block;" placeholder="Email" value=""/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="container" id="foot">
+					<div class="row">
+						<button class="next" onClick="App.complete()">FINISH</button>
+					</div>
+				</div>
+			</div>
+			<!-- End Strawberries Email Input-->
+
+<!-- End of Changing Pages -->
+
+<!-- Scripts
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+
+		<!-- Firebase -->
+		<script src="https://www.gstatic.com/firebasejs/3.3.0/firebase.js"></script>
+		<script>
+		  // Initialize Firebase
+		  var config = {
+		    apiKey: "AIzaSyA-MN-Is-NasY0o4xC4pnfZbcft02zRlYs",
+		    authDomain: "blueprintbox-f83cb.firebaseapp.com",
+		    databaseURL: "https://blueprintbox-f83cb.firebaseio.com",
+		    storageBucket: "",
+		  };
+		  firebase.initializeApp(config);
+		</script>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="js/jquery.dlmenu.js"></script>
+		<script src="js/pagetransitions.js"></script>
+		<script src="js/app.js"></script>
+
+<!-- End
+–––––––––––––––––––––––––––––––––––––––––––––––––– -->
+	</body>
+</html>
