@@ -129,7 +129,7 @@
     // Re-initialize app
     setTimeout(function() {
       console.log('I am done!')
-      initializeApp()
+      location.reload();
     }, 2000)
   }
 
